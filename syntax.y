@@ -79,6 +79,14 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 elem: INTEGER | STRING;
 
 comment: /*empty*/
+         | COMO comment_content COMC;
+
+comment_content: /*empty*/
+                 | comment_text comment_content 
+                 | '-' comment_text comment_content;
+comment_text: Char - '-';
+
+comment: /*empty*/
          | comment '<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
          |'<!--' ((Char - '-') | ('-' (Char - '-')))* '-->';
 

@@ -14,6 +14,8 @@ extern void yyerror(const char* s);
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
+"<!--" {ECHO; return COMO}
+"-->" {ECHO; COMC}
 
 "\ android:layout_width=\"" {ECHO; return LWIDTH;}
 "\ android:layout_height=\"" {ECHO; return LHEIGHT;}

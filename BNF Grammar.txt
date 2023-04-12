@@ -51,9 +51,13 @@ contents ::= /*empty*/
 content ::= LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment
 elem ::= INTEGER | STRING
 
-comment ::= /*empty*/
-         | comment '<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
-         |'<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
+comment: /*empty*/
+         | COMO comment_content COMC;
+
+comment_content: /*empty*/
+                 | comment_text comment_content 
+                 | '-' comment_text comment_content;
+comment_text: Char - '-';
 
 lwidth ::= LWIDTH elem DQUOTES
 lheight ::= LHEIGHT elem DQUOTES
