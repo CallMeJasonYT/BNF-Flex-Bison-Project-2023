@@ -10,7 +10,7 @@ extern void yyerror(const char* s);
 %option yylineno
 %option noyywrap
 %%
-"<" {ECHO; return LANGE;}
+"<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
