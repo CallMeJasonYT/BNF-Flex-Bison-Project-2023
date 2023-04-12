@@ -86,10 +86,6 @@ comment_content: /*empty*/
                  | '-' comment_text comment_content;
 comment_text: Char - '-';
 
-comment: /*empty*/
-         | comment '<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
-         |'<!--' ((Char - '-') | ('-' (Char - '-')))* '-->';
-
 lwidth: LWIDTH elem DQUOTES;
 lheight: LHEIGHT elem DQUOTES;
 text: TEXT STRING DQUOTES;
