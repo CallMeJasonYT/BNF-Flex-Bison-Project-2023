@@ -1,91 +1,93 @@
-file ::= comment RelativeLayout | comment LinearLayout;
+file ::= comment RelativeLayout | comment LinearLayout
 
 LinearLayout ::= LANGLE LINEAR
               reqattr1 id orientation
               RANGLE
               contentp
-              LANGLE SLASH LINEAR RANGLE;
+              LANGLE SLASH LINEAR RANGLE
 
 RelativeLayout ::= LANGLE RELATIVE
                 reqattr1 id
                 RANGLE
                 contents
-                LANGLE SLASH RELATIVE RANGLE;
+                LANGLE SLASH RELATIVE RANGLE
 
 TextView ::= LANGLE TEXTVIEW
           reqattr2 id textColor
-          SLASH RANGLE;
+          SLASH RANGLE
 
 ImageView ::= LANGLE IMAGEVIEW
            reqattr3 id padding
-           SLASH RANGLE;
+           SLASH RANGLE
               
 Button ::= LANGLE BUTTON
         reqattr2 id padding
-        SLASH RANGLE;
+        SLASH RANGLE
 
 RadioGroup ::= LANGLE RADIOG
             reqattr1 id checkedButton
             RANGLE
             RadioButton
-            LANGLE SLASH RADIOG RANGLE;
+            LANGLE SLASH RADIOG RANGLE
 
-RadioButton ::= RadioButton (comment | LANGLE BUTTON reqattr2 id SLASH RANGLE)
-             | (comment | LANGLE BUTTON reqattr2 id SLASH RANGLE);
+RadioButton ::= RadioButton tempRB
+             | tempRB
+tempRB ::= comment | LANGLE BUTTON reqattr2 id SLASH RANGLE
 
 ProgressBar ::= LANGE PROGRESSB 
              reqattr1 id max progress
-             SLASH RANGLE;
+             SLASH RANGLE
                    
-reqattr1 ::= lwidth lheight;
-reqattr2 ::= lwidth lheight text;
-reqattr3 ::= lheight lwidth src;
+reqattr1 ::= lwidth lheight
+reqattr2 ::= lwidth lheight text
+reqattr3 ::= lheight lwidth src
 
-contentp ::= content (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment)
-          | (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment);
+contentp ::= contentp content
+          | content
 contents ::= /*empty*/
-          | content (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment)
-          | (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment);
+          | contents content
+          | content
 
-elem ::= INTEGER | STRING;
+content ::= LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment
+elem ::= INTEGER | STRING
 
 comment ::= /*empty*/
          | comment '<!--' ((char - '-') | ('-' (char - '-')))* '-->'
-         |'<!--' ((char - '-') | ('-' (char - '-')))* '-->';
+         |'<!--' ((char - '-') | ('-' (char - '-')))* '-->'
 
-lwidth ::= LWIDTH elem DQUOTES;
-lheight ::= LHEIGHT elem DQUOTES;
-text ::= TEXT STRING DQUOTES;
-src ::= SRC STRING DQUOTES;
+lwidth ::= LWIDTH elem DQUOTES
+lheight ::= LHEIGHT elem DQUOTES
+text ::= TEXT STRING DQUOTES
+src ::= SRC STRING DQUOTES
 
 id ::= /*empty*/
-    | ID STRING DQUOTES;
+    | ID STRING DQUOTES
 orientation ::= /*empty*/
-             | ORIENTATION STRING DQUOTES;
+             | ORIENTATION STRING DQUOTES
 tcolor ::= /*empty*/
-        | TEXTCOLOR STRING DQUOTES;
+        | TEXTCOLOR STRING DQUOTES
 padding ::= /*empty*/
-        | PADDING INTEGER DQUOTES;
+        | PADDING INTEGER DQUOTES
 cbutton ::= /*empty*/
-         | CHECKEDBUTTON STRING DQUOTES;
+         | CHECKEDBUTTON STRING DQUOTES
 max ::= /*empty*/
-     | MAX INTEGER DQUOTES;
+     | MAX INTEGER DQUOTES
 progress ::= /*empty*/
-          | PROGRESS INTEGER DQUOTES;
-char ::= %x00-7F;
+          | PROGRESS INTEGER DQUOTES
+char ::= %x00-7F
 
 TOKENS:
--LWIDTH = "\ android:layout_width=\"" {ECHO; return LWIDTH;}
--LHEIGHT = "\ android:layout_height=\"" {ECHO; return LHEIGHT;}
--ID = "\ android:id=\"" {ECHO; return ID;}
--ORIENTATION = "\ android:orientation=\"" {ECHO; return ORIENTATION;}
--TEXT = "\ android:text=\"" {ECHO; return TEXT;}
--TEXTCOLOUR = "\ android:textColour=\"" {ECHO; return TEXTCOLOUR;}
--SRC = "\ android:src=\"" {ECHO; return SRC;}
--PADDING = "\ android:padding=\"" {ECHO; return PADDING;}
--CHECKEDB = "\ android:checkedButton=\"" {ECHO; return CHECKEDB;}
--MAX = "\ android:max=\"" {ECHO; return MAX;}
--PROGRESS = "\ android=progress=\"" {ECHO; return PROGRESS;}
+-LWIDTH = "\ android:layout_width=\"" {ECHO return LWIDTH}
+-LHEIGHT = "\ android:layout_height=\"" {ECHO return LHEIGHT}
+-ID = "\ android:id=\"" {ECHO return ID}
+-ORIENTATION = "\ android:orientation=\"" {ECHO return ORIENTATION}
+-TEXT = "\ android:text=\"" {ECHO return TEXT}
+-TEXTCOLOUR = "\ android:textColour=\"" {ECHO return TEXTCOLOUR}
+-SRC = "\ android:src=\"" {ECHO return SRC}
+-PADDING = "\ android:padding=\"" {ECHO return PADDING}
+-CHECKEDB = "\ android:checkedButton=\"" {ECHO return CHECKEDB}
+-MAX = "\ android:max=\"" {ECHO return MAX}
+-PROGRESS = "\ android=progress=\"" {ECHO return PROGRESS}
 
 -RELATIVE = RelativeLayout
 -LINEAR = LinearLayout

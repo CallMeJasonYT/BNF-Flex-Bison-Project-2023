@@ -57,8 +57,9 @@ RadioGroup: LANGLE RADIOG
             RadioButton
             LANGLE SLASH RADIOG RANGLE;
 
-RadioButton: RadioButton (comment | LANGLE BUTTON reqattr2 id SLASH RANGLE)
-             | (comment | LANGLE BUTTON reqattr2 id SLASH RANGLE);
+RadioButton: RadioButton tempRB
+             | tempRB;
+tempRB: comment | LANGLE BUTTON reqattr2 id SLASH RANGLE
 
 ProgressBar: LANGE PROGRESSB 
              reqattr1 id max progress
@@ -68,11 +69,12 @@ reqattr1: lwidth lheight;
 reqattr2: lwidth lheight text;
 reqattr3: lheight lwidth src;
 
-contentp: content (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment)
-          | (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment);
+contentp: contentp content
+          | content;
 contents: /*empty*/
-          | content (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment)
-          | (LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment);
+          | contents content
+          | content;
+content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment
 
 elem: INTEGER | STRING;
 
