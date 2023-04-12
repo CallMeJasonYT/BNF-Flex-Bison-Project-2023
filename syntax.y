@@ -110,7 +110,7 @@ progress: /*empty*/
 %%
 
 void yyerror(const char* s){
-    fprintf(stderr,"error %s in line : %d\n ",s,yylineno);
+    fprintf(stderr,"Error %s in line : %d\n ",s,yylineno);
 }
 
 int main(int argc, char** argv){
@@ -127,7 +127,7 @@ int main(int argc, char** argv){
         printf("succesfull parsing\n");
     }
     else{
-        printf("\n unsuccesfull parsing on line:\n");
+        printf("\nUnsuccesfull parsing\n");
 
     }
 }
