@@ -127,7 +127,7 @@ int main(int argc, char** argv){
         printf("succesfull parsing\n");
     }
     else{
-        printf("unsuccesfull parsing on line:\n");
-        yyerror("parse error");
+        printf("\nunsuccesfull parsing on line:\n");
+
     }
 }
