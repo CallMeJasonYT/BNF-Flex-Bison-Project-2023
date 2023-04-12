@@ -23,7 +23,7 @@ extern void yyerror(const char* s);
 "RadioButton" {ECHO; return RADIOB;}
 "ProgressBar" {ECHO; return PROGRESSB;}
 [0-9]+ {ECHO; yylval.integer=atoi(yytext); return INTEGER;}
-"[^"]*" {yylval.string=strdup(yytext); ECHO; return STRING;}
+"[^"']*\" {yylval.string=strdup(yytext); ECHO; return STRING;}
 "\n" {}
 [\t]+ {}
 . {}
