@@ -18,7 +18,7 @@ extern void yyerror(const char* s);
 "-->" {ECHO; return COMC;}
 [.^-] {ECHO; return CHAR;}
 
-"\ android:layout_width=\"" {ECHO; return LWIDTH;}
+android:layout_width=\" {ECHO; return LWIDTH;}
 "\ android:layout_height=\"" {ECHO; return LHEIGHT;}
 "\ android:id=\"" {ECHO; return ID;}
 "\ android:orientation=\"" {ECHO; return ORIENTATION;}
@@ -28,7 +28,7 @@ extern void yyerror(const char* s);
 "\ android:padding=\"" {ECHO; return PADDING;}
 "\ android:checkedButton=\"" {ECHO; return CHECKEDB;}
 "\ android:max=\"" {ECHO; return MAX;}
-"\ android=progress=\"" {ECHO; return PROGRESS;}
+"\ android:progress=\"" {ECHO; return PROGRESS;}
 
 "RelativeLayout" {ECHO; return RELATIVE;}
 "LinearLayout" {ECHO; return LINEAR;}
