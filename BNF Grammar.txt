@@ -78,7 +78,6 @@ max ::= /*empty*/
      | MAX INTEGER DQUOTES
 progress ::= /*empty*/
           | PROGRESS INTEGER DQUOTES
-Char ::= %x00-7F
 
 TOKENS:
 -LWIDTH = "\ android:layout_width=\"" {ECHO return LWIDTH}

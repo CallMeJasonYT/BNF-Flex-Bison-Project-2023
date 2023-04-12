@@ -106,7 +106,6 @@ max: /*empty*/
      | MAX INTEGER DQUOTES;
 progress: /*empty*/
           | PROGRESS INTEGER DQUOTES;
-Char: . ;
 
 %%
 
