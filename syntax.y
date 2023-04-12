@@ -79,8 +79,8 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 elem: INTEGER | STRING;
 
 comment: /*empty*/
-         | comment '<!--' ((char - '-') | ('-' (char - '-')))* '-->'
-         |'<!--' ((char - '-') | ('-' (char - '-')))* '-->';
+         | comment '<!--' ((Char - '-') | ('-' (Char - '-')))* '-->'
+         |'<!--' ((Char - '-') | ('-' (Char - '-')))* '-->';
 
 lwidth: LWIDTH elem DQUOTES;
 lheight: LHEIGHT elem DQUOTES;
@@ -101,7 +101,7 @@ max: /*empty*/
      | MAX INTEGER DQUOTES;
 progress: /*empty*/
           | PROGRESS INTEGER DQUOTES;
-char: %x00-7F;
+Char: %x00-7F;
 
 %%
 
