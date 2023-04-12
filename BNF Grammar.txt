@@ -78,31 +78,3 @@ max ::= /*empty*/
      | MAX INTEGER DQUOTES
 progress ::= /*empty*/
           | PROGRESS INTEGER DQUOTES
-
-TOKENS:
--LWIDTH = "\ android:layout_width=\"" {ECHO return LWIDTH}
--LHEIGHT = "\ android:layout_height=\"" {ECHO return LHEIGHT}
--ID = "\ android:id=\"" {ECHO return ID}
--ORIENTATION = "\ android:orientation=\"" {ECHO return ORIENTATION}
--TEXT = "\ android:text=\"" {ECHO return TEXT}
--TEXTCOLOUR = "\ android:textColour=\"" {ECHO return TEXTCOLOUR}
--SRC = "\ android:src=\"" {ECHO return SRC}
--PADDING = "\ android:padding=\"" {ECHO return PADDING}
--CHECKEDB = "\ android:checkedButton=\"" {ECHO return CHECKEDB}
--MAX = "\ android:max=\"" {ECHO return MAX}
--PROGRESS = "\ android=progress=\"" {ECHO return PROGRESS}
-
--RELATIVE = RelativeLayout
--LINEAR = LinearLayout
--TEXTVIEW = TextView
--IMAGEVIEW = ImageView
--BUTTON = Button
--RADIOG = RadioGroup
--RADIOB = RadioButton
--PROGRESSB = ProgressBar
--INTEGER = int
--STRING = string
--SLASH = "/"
--LANGLE = "<"
--RANGLE = ">"
--DQUOTES = """
