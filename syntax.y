@@ -100,8 +100,8 @@ tcolor: /*empty*/
         | TEXTCOLOR STRING DQUOTES;
 padding: /*empty*/
         | PADDING INTEGER DQUOTES;
-cbutton: /*empty*/
-         | CHECKEDBUTTON STRING DQUOTES;
+cbutton: /*empty*/ 
+         | CHECKEDB STRING DQUOTES;
 max: /*empty*/
      | MAX INTEGER DQUOTES;
 progress: /*empty*/

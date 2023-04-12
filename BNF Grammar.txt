@@ -73,7 +73,7 @@ tcolor ::= /*empty*/
 padding ::= /*empty*/
         | PADDING INTEGER DQUOTES
 cbutton ::= /*empty*/
-         | CHECKEDBUTTON STRING DQUOTES
+         | CHECKEDB STRING DQUOTES
 max ::= /*empty*/
      | MAX INTEGER DQUOTES
 progress ::= /*empty*/
