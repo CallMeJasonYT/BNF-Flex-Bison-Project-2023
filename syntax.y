@@ -41,8 +41,7 @@ RelativeLayout: LANGLE RELATIVE
                 LANGLE SLASH RELATIVE RANGLE;
 
 TextView: LANGLE TEXTVIEW
-          reqattr2 
-          id tcolor
+          reqattr2 id tcolor
           SLASH RANGLE;
 
 ImageView: LANGLE IMAGEVIEW
