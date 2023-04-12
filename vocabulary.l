@@ -39,7 +39,7 @@ android:layout_width=\" {ECHO; return LWIDTH;}
 "RadioButton" {ECHO; return RADIOB;}
 "ProgressBar" {ECHO; return PROGRESSB;}
 [0-9]+ {ECHO; yylval.integer=atoi(yytext); return INTEGER;}
-[a-zA-Z0-9_ ]+ {yylval.string=strdup(yytext); ECHO; return STRING;}
+[a-zA-Z0-9_ \]+ {yylval.string=strdup(yytext); ECHO; return STRING;}
 "\n" {ECHO;}
 [\t]+ {}
 . {}
