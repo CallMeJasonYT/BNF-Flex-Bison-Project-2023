@@ -1,2 +1,1 @@
-<RelativeLayout 
-android:layout_width="123" android:layout_height="123"></RelativeLayout>
+<RelativeLayout android:layout_width="matchparent" android:layout_height="matchparent"></RelativeLayout>
