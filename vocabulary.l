@@ -42,5 +42,5 @@ android:layout_width=\" {ECHO; return LWIDTH;}
 [a-zA-Z0-9_ ]+ {yylval.string=strdup(yytext); ECHO; return STRING;}
 "\n" {ECHO;}
 [\t]+ {}
-. {}
+. {ECHO;}
 %%
