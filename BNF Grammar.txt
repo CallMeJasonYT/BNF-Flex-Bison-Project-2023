@@ -57,7 +57,7 @@ comment: /*empty*/
 comment_content: /*empty*/
                  | comment_text comment_content 
                  | '-' comment_text comment_content;
-comment_text: Char - '-';
+comment_text: CHAR;
 
 lwidth ::= LWIDTH elem DQUOTES
 lheight ::= LHEIGHT elem DQUOTES
