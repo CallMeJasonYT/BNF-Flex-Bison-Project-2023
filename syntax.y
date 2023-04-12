@@ -101,7 +101,7 @@ max: /*empty*/
      | MAX INTEGER DQUOTES;
 progress: /*empty*/
           | PROGRESS INTEGER DQUOTES;
-Char: %x00-7F;
+Char: [\x00-\x7F];
 
 %%
 
