@@ -13,6 +13,19 @@ extern void yyerror(const char* s);
 "<" {ECHO; return LANGE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
+\" {ECHO; return DQUOTES;}
+
+"\ android:layout_width=\"" {ECHO; return LWIDTH;}
+"\ android:layout_height=\"" {ECHO; return LHEIGHT;}
+"\ android:id=\"" {ECHO; return ID;}
+"\ android:orientation=\"" {ECHO; return ORIENTATION;}
+"\ android:text=\"" {ECHO; return TEXT;}
+"\ android:textColour=\"" {ECHO; return TEXTCOLOUR;}
+"\ android:src=\"" {ECHO; return SRC;}
+"\ android:padding=\"" {ECHO; return PADDING;}
+"\ android:checkedButton=\"" {ECHO; return CHECKEDB;}
+"\ android:max=\"" {ECHO; return MAX;}
+"\ android=progress=\"" {ECHO; return PROGRESS;}
 
 "RelativeLayout" {ECHO; return RELATIVE;}
 "LinearLayout" {ECHO; return LINEAR;}
