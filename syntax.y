@@ -13,7 +13,8 @@ int yydebug=1;
 %}
 
 %token RELATIVE LINEAR TEXTVIEW IMAGEVIEW BUTTON RADIOG RADIOB PROGRESSB
-%token SLASH LANGLE RANGLE
+%token LWIDTH LHEIGHT ID ORIENTATION TEXT TEXTCOLOR SRC PADDING CHECKEDB MAX PROGRESS
+%token SLASH LANGLE RANGLE DQUOTES COMO COMC CHAR
 %token <integer> INTEGER
 %token <string> STRING
 
@@ -40,7 +41,7 @@ RelativeLayout: LANGLE RELATIVE
                 LANGLE SLASH RELATIVE RANGLE;
 
 TextView: LANGLE TEXTVIEW
-          reqattr2 id textColor
+          reqattr2 id tcolor
           SLASH RANGLE;
 
 ImageView: LANGLE IMAGEVIEW
@@ -52,7 +53,7 @@ Button: LANGLE BUTTON
         SLASH RANGLE;
 
 RadioGroup: LANGLE RADIOG
-            reqattr1 id checkedButton
+            reqattr1 id cbutton
             RANGLE
             RadioButton
             LANGLE SLASH RADIOG RANGLE;
@@ -61,7 +62,7 @@ RadioButton: RadioButton tempRB
              | tempRB;
 tempRB: comment | LANGLE BUTTON reqattr2 id SLASH RANGLE
 
-ProgressBar: LANGE PROGRESSB 
+ProgressBar: LANGLE PROGRESSB 
              reqattr1 id max progress
              SLASH RANGLE;
                    
