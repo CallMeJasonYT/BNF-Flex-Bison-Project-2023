@@ -96,6 +96,16 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
+COMMENT: COMO comment_text COMC
+       {
+           /* Ignore comments by treating them as whitespace */
+           yylval = NULL;
+       };
+
+comment_text: /* empty */
+            | comment_text CHAR
+            ;
+
 comment: COMO CHAR COMC;
 
 id: /*empty*/
