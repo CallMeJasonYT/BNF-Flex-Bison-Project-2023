@@ -21,7 +21,6 @@ android:layout_height="wrap_content"
 android:text="Option 2"
 android:id="RB2"/>
 </RadioGroup>
-<!-- This is a comment ignore me -->
 <RelativeLayout
 android:layout_width="match_parent"
 android:layout_height="wrap_content">
