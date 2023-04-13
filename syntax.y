@@ -96,6 +96,9 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
+comment: /*empty*/
+         | COMO CHAR COMC;
+
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES;
 orientation: /*empty*/
