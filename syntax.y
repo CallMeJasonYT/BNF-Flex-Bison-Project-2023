@@ -70,7 +70,7 @@ ProgressBar: LANGLE PROGRESSB
                    
 reqattr1: lwidth lheight;
 reqattr2: lwidth lheight text;
-reqattr3: lheight lwidth src;
+reqattr3: lwidth lheight src;
 
 contentp: contentp content
           | content;
