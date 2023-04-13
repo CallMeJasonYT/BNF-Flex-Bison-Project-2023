@@ -15,13 +15,20 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Option 1"
 android:id="RB1"/>
-<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="RB2"
-android:text="Dption 2"/>
+<RadioButton
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Option 2"
+android:id="RB2"/>
 </RadioGroup>
 <!-- This is a comment, ignore me! -->
-<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
 <ImageView
-android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
 android:src="image_name"
-android: padding="50"/>
-</RelativeLayout> </LinearLayout>
+android:padding="50"/>
+</RelativeLayout>
+</LinearLayout>
