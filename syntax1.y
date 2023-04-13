@@ -71,12 +71,18 @@ RadioGroup: LANGLE RADIOG
             LHEIGHT DQUOTES elem DQUOTES 
             id cbutton
             RANGLE
+            tempRB
             RadioButton
             LANGLE SLASH RADIOG RANGLE;
 
-RadioButton: RadioButton tempRB
-             | tempRB;
-tempRB: LANGLE RADIOB LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES TEXT DQUOTES STRING DQUOTES id SLASH RANGLE;
+RadioButton: /*empty*/
+             | RadioButton tempRB;
+tempRB: LANGLE RADIOB 
+        LWIDTH DQUOTES elem DQUOTES
+        LHEIGHT DQUOTES elem DQUOTES
+        TEXT DQUOTES STRING DQUOTES
+        id
+        SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
              LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
@@ -86,7 +92,7 @@ contentp: contentp content
           | content;
 contents: /*empty*/
           | contents content;
-content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar
+content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | ProgressBar
 
 elem: INTEGER | STRING;
 
