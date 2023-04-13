@@ -59,22 +59,22 @@ comment_content: /*empty*/
                  | '-' comment_text comment_content;
 comment_text: CHAR;
 
-lwidth ::= LWIDTH elem DQUOTES
-lheight ::= LHEIGHT elem DQUOTES
-text ::= TEXT STRING DQUOTES
-src ::= SRC STRING DQUOTES
+lwidth ::= LWIDTH DQUOTES elem DQUOTES
+lheight ::= LHEIGHT DQUOTES elem DQUOTES
+text ::= TEXT DQUOTES STRING DQUOTES
+src ::= SRC DQUOTES STRING DQUOTES
 
 id ::= /*empty*/
-    | ID STRING DQUOTES
+    | ID DQUOTES STRING DQUOTES
 orientation ::= /*empty*/
-             | ORIENTATION STRING DQUOTES
+             | ORIENTATION DQUOTES STRING DQUOTES
 tcolor ::= /*empty*/
-        | TEXTCOLOR STRING DQUOTES
+        | TEXTCOLOR DQUOTES STRING DQUOTES
 padding ::= /*empty*/
-        | PADDING INTEGER DQUOTES
+        | PADDING DQUOTES INTEGER DQUOTES
 cbutton ::= /*empty*/
-         | CHECKEDB STRING DQUOTES
+         | CHECKEDB DQUOTES STRING DQUOTES
 max ::= /*empty*/
-     | MAX INTEGER DQUOTES
+     | MAX DQUOTES INTEGER DQUOTES
 progress ::= /*empty*/
-          | PROGRESS INTEGER DQUOTES
+          | PROGRESS DQUOTES INTEGER DQUOTES
