@@ -29,32 +29,47 @@ unsigned int integer;
 file: comment RelativeLayout | comment LinearLayout;
 
 LinearLayout: LANGLE LINEAR
-              reqattr1 id orientation
+              LWIDTH DQUOTES elem DQUOTES 
+              LHEIGHT DQUOTES elem DQUOTES 
+              id 
+              orientation
               RANGLE
               contentp
               LANGLE SLASH LINEAR RANGLE;
 
 RelativeLayout: LANGLE RELATIVE
-                reqattr1 id
+                LWIDTH DQUOTES elem DQUOTES 
+                LHEIGHT DQUOTES elem DQUOTES 
+                id
                 RANGLE
                 contents
                 LANGLE SLASH RELATIVE RANGLE;
 
 TextView: LANGLE TEXTVIEW
-          reqattr2 
+          LWIDTH DQUOTES elem DQUOTES 
+          LHEIGHT DQUOTES elem DQUOTES 
+          TEXT DQUOTES STRING DQUOTES 
           id tcolor
           SLASH RANGLE;
 
 ImageView: LANGLE IMAGEVIEW
-           reqattr3 id padding
+           LWIDTH DQUOTES elem DQUOTES
+           LHEIGHT DQUOTES elem DQUOTES 
+           SRC DQUOTES STRING DQUOTES 
+           id padding
            SLASH RANGLE;
               
 Button: LANGLE BUTTON
-        reqattr2 id padding
+        LWIDTH DQUOTES elem DQUOTES 
+        LHEIGHT DQUOTES elem DQUOTES 
+        TEXT DQUOTES STRING DQUOTES 
+        id padding
         SLASH RANGLE;
 
 RadioGroup: LANGLE RADIOG
-            reqattr1 id cbutton
+            LWIDTH DQUOTES elem DQUOTES
+            LHEIGHT DQUOTES elem DQUOTES 
+            id cbutton
             RANGLE
             RadioButton
             LANGLE SLASH RADIOG RANGLE;
@@ -62,15 +77,11 @@ RadioGroup: LANGLE RADIOG
 RadioButton: RadioButton tempRB
              | tempRB;
 tempRB: comment 
-        | LANGLE RADIOB reqattr2 id SLASH RANGLE;
+        | LANGLE RADIOB LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES TEXT DQUOTES STRING DQUOTES id SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
-             reqattr1 id max progress
+             LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
              SLASH RANGLE;
-                   
-reqattr1: lwidth lheight;
-reqattr2: lwidth lheight text;
-reqattr3: lwidth lheight src;
 
 contentp: contentp content
           | content;
@@ -88,11 +99,6 @@ comment_content: /*empty*/
                  | comment_text comment_content 
                  | '-' comment_text comment_content;
 comment_text: CHAR;
-
-lwidth: LWIDTH DQUOTES elem DQUOTES;
-lheight: LHEIGHT DQUOTES elem DQUOTES;
-text: TEXT DQUOTES STRING DQUOTES;
-src: SRC DQUOTES STRING DQUOTES;
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES;
@@ -126,7 +132,7 @@ int main(int argc, char** argv){
     fclose(fp);
     yyin=fopen(argv[1],"r");
     if(yyparse()==0){
-        printf("succesfull parsing\n");
+        printf("Succesfull Parsing\n");
     }
     else{
         printf("\nUnsuccesfull parsing\n");
