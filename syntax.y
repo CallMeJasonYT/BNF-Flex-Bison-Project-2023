@@ -26,12 +26,12 @@ unsigned int integer;
 %start file
 %%
 
-file: comment RelativeLayout | comment LinearLayout;
+file: RelativeLayout | LinearLayout;
 
 LinearLayout: LANGLE LINEAR
-              LWIDTH DQUOTES elem DQUOTES 
-              LHEIGHT DQUOTES elem DQUOTES 
-              id 
+              LWIDTH DQUOTES elem DQUOTES
+              LHEIGHT DQUOTES elem DQUOTES
+              id
               orientation
               RANGLE
               contentp
@@ -71,13 +71,18 @@ RadioGroup: LANGLE RADIOG
             LHEIGHT DQUOTES elem DQUOTES 
             id cbutton
             RANGLE
+            tempRB
             RadioButton
             LANGLE SLASH RADIOG RANGLE;
 
-RadioButton: RadioButton tempRB
-             | tempRB;
-tempRB: comment 
-        | LANGLE RADIOB LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES TEXT DQUOTES STRING DQUOTES id SLASH RANGLE;
+RadioButton: /*empty*/
+             | RadioButton tempRB;
+tempRB: LANGLE RADIOB 
+        LWIDTH DQUOTES elem DQUOTES
+        LHEIGHT DQUOTES elem DQUOTES
+        TEXT DQUOTES STRING DQUOTES
+        id
+        SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
              LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
@@ -86,19 +91,10 @@ ProgressBar: LANGLE PROGRESSB
 contentp: contentp content
           | content;
 contents: /*empty*/
-          | contents content
-          | content;
-content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar | comment
+          | contents content;
+content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | ProgressBar
 
 elem: INTEGER | STRING;
-
-comment: /*empty*/
-         | COMO comment_content COMC;
-
-comment_content: /*empty*/
-                 | comment_text comment_content 
-                 | '-' comment_text comment_content;
-comment_text: CHAR;
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES;
