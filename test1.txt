@@ -3,10 +3,17 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 <TextView
-android:layout_width="20" android:layout_height="20" android:text="Dummy text"
+android:layout_width="20"
+android:layout_height="20"
+android:text="Dummy text"
 android:id="TV1"/>
-<RadioGroup android:layout_width="wrap_content" android:layout_height="wrap_content">
-<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="RB1"
+<RadioGroup
+android:layout_width="wrap_content"
+android:layout_height="wrap_content">
+<RadioButton
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="RB1"
 android:text="Dption 1"/>
 <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="RB2"
 android:text="Dption 2"/>
