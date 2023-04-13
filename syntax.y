@@ -61,7 +61,8 @@ RadioGroup: LANGLE RADIOG
 
 RadioButton: RadioButton tempRB
              | tempRB;
-tempRB: comment | LANGLE BUTTON reqattr2 id SLASH RANGLE
+tempRB: comment 
+        | LANGLE RADIOB reqattr2 id SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
              reqattr1 id max progress
