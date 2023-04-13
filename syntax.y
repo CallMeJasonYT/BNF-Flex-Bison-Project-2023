@@ -26,7 +26,7 @@ unsigned int integer;
 %start file
 %%
 
-file: RelativeLayout | LinearLayout;
+file: comment RelativeLayout | comment LinearLayout;
 
 LinearLayout: LANGLE LINEAR
               LWIDTH DQUOTES elem DQUOTES
@@ -96,8 +96,7 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
-comment: /*empty*/
-         | COMO CHAR COMC;
+comment: COMO CHAR COMC;
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES;
