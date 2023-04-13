@@ -42,5 +42,6 @@ android:progress= {ECHO; return PROGRESS;}
 [a-zA-Z0-9_]+ {yylval.string=strdup(yytext); ECHO; return STRING;}
 [\n] {ECHO;}
 [\t]+ {ECHO;}
+[ ]+ {ECHO;}
 . {}
 %%
