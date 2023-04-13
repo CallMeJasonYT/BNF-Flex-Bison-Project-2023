@@ -29,9 +29,9 @@ unsigned int integer;
 file: RelativeLayout | LinearLayout;
 
 LinearLayout: LANGLE LINEAR
-              LWIDTH DQUOTES elem DQUOTES 
-              LHEIGHT DQUOTES elem DQUOTES 
-              id 
+              LWIDTH DQUOTES elem DQUOTES
+              LHEIGHT DQUOTES elem DQUOTES
+              id
               orientation
               RANGLE
               contentp
@@ -85,8 +85,7 @@ ProgressBar: LANGLE PROGRESSB
 contentp: contentp content
           | content;
 contents: /*empty*/
-          | contents content
-          | content;
+          | contents content;
 content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | RadioButton | ProgressBar
 
 elem: INTEGER | STRING;
