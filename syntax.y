@@ -198,7 +198,6 @@ progress: /*empty*/
           };
 
 %%
-
 void yyerror(){
     fprintf(stderr,"Error in line : %d\n ",yylineno);
 }
