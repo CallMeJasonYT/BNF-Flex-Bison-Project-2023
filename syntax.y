@@ -161,7 +161,12 @@ orientation: /*empty*/
 tcolor: /*empty*/
         | TEXTCOLOUR DQUOTES STRING DQUOTES;
 padding: /*empty*/
-        | PADDING DQUOTES INTEGER DQUOTES;
+        | PADDING DQUOTES INTEGER DQUOTES{
+            if($3 <= 0) {
+                printf("\nError: Padding value must be a Possitive integer");
+                longjmp(buf, 1);
+            }
+        };
 cbutton: /*empty*/ 
          | CHECKEDB DQUOTES STRING DQUOTES;
 max: /*empty*/
