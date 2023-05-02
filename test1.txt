@@ -17,7 +17,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Option 1"
-			android:id="TV1"/>
+			android:id="RB1"/>
 
 		<RadioButton
 			android:layout_width="wrap_content"
