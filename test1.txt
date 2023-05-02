@@ -4,7 +4,7 @@
 	android:orientation="vertical">
 
 	<TextView
-		android:layout_width="blue"
+		android:layout_width="0"
 		android:layout_height="20"
 		android:text="Dummy text"
 		android:id="TV1"/>
