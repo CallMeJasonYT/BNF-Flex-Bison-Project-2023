@@ -41,8 +41,8 @@ unsigned int integer;
 file: comment RelativeLayout | comment LinearLayout;
 
 LinearLayout: LANGLE LINEAR
-              LWIDTH DQUOTES elem DQUOTES
-              LHEIGHT DQUOTES elem DQUOTES
+              lwidth DQUOTES elem DQUOTES
+              lheight DQUOTES elem DQUOTES
               id
               orientation
               RANGLE
@@ -50,37 +50,37 @@ LinearLayout: LANGLE LINEAR
               LANGLE SLASH LINEAR RANGLE;
 
 RelativeLayout: LANGLE RELATIVE
-                LWIDTH DQUOTES elem DQUOTES 
-                LHEIGHT DQUOTES elem DQUOTES 
+                lwidth DQUOTES elem DQUOTES
+                lheight DQUOTES elem DQUOTES
                 id
                 RANGLE
                 contents
                 LANGLE SLASH RELATIVE RANGLE;
 
 TextView: LANGLE TEXTVIEW
-          LWIDTH DQUOTES elem DQUOTES 
-          LHEIGHT DQUOTES elem DQUOTES 
+          lwidth DQUOTES elem DQUOTES 
+          lheight DQUOTES elem DQUOTES 
           TEXT DQUOTES STRING DQUOTES 
           id tcolor
           SLASH RANGLE;
 
 ImageView: LANGLE IMAGEVIEW
-           LWIDTH DQUOTES elem DQUOTES
-           LHEIGHT DQUOTES elem DQUOTES 
+           lwidth DQUOTES elem DQUOTES
+           lheight DQUOTES elem DQUOTES 
            SRC DQUOTES STRING DQUOTES 
            id padding
            SLASH RANGLE;
               
 Button: LANGLE BUTTON
-        LWIDTH DQUOTES elem DQUOTES 
-        LHEIGHT DQUOTES elem DQUOTES 
+        lwidth DQUOTES elem DQUOTES 
+        lheight DQUOTES elem DQUOTES 
         TEXT DQUOTES STRING DQUOTES 
         id padding
         SLASH RANGLE;
 
 RadioGroup: LANGLE RADIOG
-            LWIDTH DQUOTES elem DQUOTES
-            LHEIGHT DQUOTES elem DQUOTES 
+            lwidth DQUOTES elem DQUOTES
+            lheight DQUOTES elem DQUOTES 
             id cbutton
             RANGLE
             tempRB
@@ -90,14 +90,14 @@ RadioGroup: LANGLE RADIOG
 RadioButton: /*empty*/
              | RadioButton tempRB;
 tempRB: LANGLE RADIOB 
-        LWIDTH DQUOTES elem DQUOTES
-        LHEIGHT DQUOTES elem DQUOTES
+        lwidth DQUOTES elem DQUOTES
+        lheight DQUOTES elem DQUOTES
         TEXT DQUOTES STRING DQUOTES
         id
         SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
-             LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
+             lwidth DQUOTES elem DQUOTES lheight DQUOTES elem DQUOTES id max progress
              SLASH RANGLE;
 
 contentp: contentp content
@@ -111,9 +111,19 @@ elem: INTEGER | STRING;
 comment: /* empty */
          | COMO comment_text COMC
 
-comment_text: /* empty */
-            | comment_text CHAR
-            ;
+lwidth: LWIDTH {
+    if($1 != ("wrap_content" || match_parent) || $1 <= 0){
+        printf("\nError: layout_width has incorrect Values");
+        longjmp(buf, 1);
+    }
+};
+
+lwidth: LHEIGHT {
+    if($1 != ("wrap_content" || match_parent) || $1 <= 0){
+        printf("\nError: layout_height has incorrect Values");
+        longjmp(buf, 1);
+    }
+};
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES{
