@@ -89,7 +89,7 @@ RadioGroup: LANGLE RADIOG
             tempRB
             RadioButton
             LANGLE SLASH RADIOG RANGLE{
-                int temprbcount = $11;
+                int temprbcount = $13;
                 if(temprbcount <= 0 || temprbcount > rbcounter){
                     printf("\nError: RadioButtonCount value must be higher than 0 and equal or lower than %d", rbcounter);
                     longjmp(buf, 1);
