@@ -108,9 +108,6 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
-comment: /* empty */
-         | COMO comment_text COMC
-
 lwidth: LWIDTH {
     if($1 != ("wrap_content" || match_parent) || $1 <= 0){
         printf("\nError: layout_width has incorrect Values");
@@ -118,7 +115,7 @@ lwidth: LWIDTH {
     }
 };
 
-lwidth: LHEIGHT {
+lheight: LHEIGHT {
     if($1 != ("wrap_content" || match_parent) || $1 <= 0){
         printf("\nError: layout_height has incorrect Values");
         longjmp(buf, 1);
