@@ -183,6 +183,7 @@ progress: /*empty*/
           | PROGRESS DQUOTES INTEGER DQUOTES{
                 if($3 <= 0 || $3 > progress_max){
                     printf("\nError: Progress value must a Value between 0 and %d", progress_max);
+                    longjmp(buf, 1);
                 }
           };
 
