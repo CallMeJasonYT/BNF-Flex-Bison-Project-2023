@@ -15,7 +15,7 @@ extern char* yytext;
 extern FILE* yyin;
 extern FILE* yyout;
 int yylex();
-void yyerror(const char* s);
+void yyerror();
 int yydebug=1;
 %}
 
