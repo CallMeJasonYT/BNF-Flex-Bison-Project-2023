@@ -107,7 +107,7 @@ comment_text: /* empty */
             ;
 
 id: /*empty*/
-    | ID DQUOTES STRING DQUOTES;
+    | ID DQUOTES STRING DQUOTES { if (strcmp(yytext+1, $3) != 0) printf("Error: expected android:id=\"%s\", got \"%s\"\n", yytext+1, $3); };
 orientation: /*empty*/
              | ORIENTATION DQUOTES STRING DQUOTES;
 tcolor: /*empty*/
