@@ -82,7 +82,7 @@ Button: LANGLE BUTTON
 
 RadioGroup: LANGLE RADIOG
             LWIDTH DQUOTES elem DQUOTES
-            LHEIGHT DQUOTES elem DQUOTES 
+            LHEIGHT DQUOTES elem DQUOTES
             RBCOUNT DQUOTES INTEGER DQUOTES
             id cbutton
             RANGLE
