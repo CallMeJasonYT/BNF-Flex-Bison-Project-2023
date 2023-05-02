@@ -85,10 +85,12 @@ RadioGroup: LANGLE RADIOG
             RANGLE
             tempRB
             RadioButton
-            LANGLE SLASH RADIOG RANGLE;
+            LANGLE SLASH RADIOG RANGLE
 
 RadioButton: /*empty*/
-             | RadioButton tempRB;
+             | RadioButton tempRB{
+                printf("CHECK THIS %s\n", $14);
+             };
 tempRB: LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES
         LHEIGHT DQUOTES elem DQUOTES
@@ -167,8 +169,12 @@ padding: /*empty*/
                 longjmp(buf, 1);
             }
         };
+
 cbutton: /*empty*/ 
-         | CHECKEDB DQUOTES STRING DQUOTES;
+         | CHECKEDB DQUOTES STRING DQUOTES{
+            cbuttonval = $3
+         };
+
 max: /*empty*/
      | MAX DQUOTES INTEGER DQUOTES;
 progress: /*empty*/
