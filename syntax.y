@@ -120,10 +120,8 @@ id: /*empty*/
         // check if id already exists in linked list
         id_found = false;
         id_list* cur = head;
-        char* id_value = strtok(yytext, "\"");
-        id_value = strtok(NULL, "\"");
         while (cur != NULL) {
-            if (strcmp(cur->id, id_value) == 0) {
+            if (strcmp(cur->id, $3) == 0) {
                 id_found = true;
                 break;
             }
@@ -131,12 +129,12 @@ id: /*empty*/
         }
         // if id is found, report an error
         if (id_found) {
-            printf("Error: id \"%s\" already exists\n", id_value);
+            printf("Error: id \"%s\" already exists\n", yytext);
             longjmp(buf, 1);
         }
         // otherwise, add id to linked list
         id_list* new_id = malloc(sizeof(id_list));
-        new_id->id = strdup(id_value);
+        new_id->id = $3;
         new_id->next = NULL;
         if (head == NULL) {
             head = new_id;
