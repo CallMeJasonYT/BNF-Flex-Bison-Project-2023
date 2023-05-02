@@ -108,6 +108,8 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
+comment: /* empty */
+
 lwidth: LWIDTH {
     if($1 != ("wrap_content" || match_parent) || $1 <= 0){
         printf("\nError: layout_width has incorrect Values");
