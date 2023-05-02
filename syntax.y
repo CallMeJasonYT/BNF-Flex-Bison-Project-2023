@@ -89,7 +89,7 @@ RadioGroup: LANGLE RADIOG
 
 RadioButton: /*empty*/
              | RadioButton tempRB{
-                printf("CHECK THIS %s\n", $14);
+                printf("CHECK THIS %s\n", $10);
              };
 tempRB: LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES
