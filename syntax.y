@@ -35,6 +35,7 @@ unsigned int integer;
   jmp_buf buf;
   id_list* head = NULL;
   bool id_found = false;
+  int progress_max = 0;
 %}
 %%
 
@@ -88,9 +89,8 @@ RadioGroup: LANGLE RADIOG
             LANGLE SLASH RADIOG RANGLE
 
 RadioButton: /*empty*/
-             | RadioButton tempRB{
-                printf("CHECK THIS %s\n", $5);
-             };
+             | RadioButton tempRB
+
 tempRB: LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES
         LHEIGHT DQUOTES elem DQUOTES
@@ -176,9 +176,15 @@ cbutton: /*empty*/
          };
 
 max: /*empty*/
-     | MAX DQUOTES INTEGER DQUOTES;
+     | MAX DQUOTES INTEGER DQUOTES{
+            progress_max = $3;
+     };
 progress: /*empty*/
-          | PROGRESS DQUOTES INTEGER DQUOTES;
+          | PROGRESS DQUOTES INTEGER DQUOTES{
+                if($3 <= 0 || $3 > progress_max){
+                    printf("\nError: Progress value must a Value between 0 and %d", progress_max);
+                }
+          };
 
 %%
 
