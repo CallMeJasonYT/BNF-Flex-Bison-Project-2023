@@ -215,6 +215,7 @@ int main(int argc, char** argv){
     yyin=fopen(argv[1],"r");
     if(setjmp(buf) != 0) {
         printf("\nUnsuccessful parsing\n");
+        yyerror();
         return 1;
     }
     if(yyparse()==0){
