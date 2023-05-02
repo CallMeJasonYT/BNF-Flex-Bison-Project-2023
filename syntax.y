@@ -99,7 +99,9 @@ tempRB: LANGLE RADIOB
         SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
-             LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
+             LWIDTH DQUOTES elem DQUOTES 
+             LHEIGHT DQUOTES elem DQUOTES 
+             id max progress
              SLASH RANGLE;
 
 contentp: contentp content
