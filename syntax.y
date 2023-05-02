@@ -41,8 +41,8 @@ unsigned int integer;
 file: comment RelativeLayout | comment LinearLayout;
 
 LinearLayout: LANGLE LINEAR
-              lwidth DQUOTES elem DQUOTES
-              lheight DQUOTES elem DQUOTES
+              LWIDTH DQUOTES elem DQUOTES
+              LHEIGHT DQUOTES elem DQUOTES
               id
               orientation
               RANGLE
@@ -50,37 +50,37 @@ LinearLayout: LANGLE LINEAR
               LANGLE SLASH LINEAR RANGLE;
 
 RelativeLayout: LANGLE RELATIVE
-                lwidth DQUOTES elem DQUOTES
-                lheight DQUOTES elem DQUOTES
+                LWIDTH DQUOTES elem DQUOTES
+                LHEIGHT DQUOTES elem DQUOTES
                 id
                 RANGLE
                 contents
                 LANGLE SLASH RELATIVE RANGLE;
 
 TextView: LANGLE TEXTVIEW
-          lwidth DQUOTES elem DQUOTES 
-          lheight DQUOTES elem DQUOTES 
+          LWIDTH DQUOTES elem DQUOTES 
+          LHEIGHT DQUOTES elem DQUOTES 
           TEXT DQUOTES STRING DQUOTES 
           id tcolor
           SLASH RANGLE;
 
 ImageView: LANGLE IMAGEVIEW
-           lwidth DQUOTES elem DQUOTES
-           lheight DQUOTES elem DQUOTES 
+           LWIDTH DQUOTES elem DQUOTES
+           LHEIGHT DQUOTES elem DQUOTES 
            SRC DQUOTES STRING DQUOTES 
            id padding
            SLASH RANGLE;
               
 Button: LANGLE BUTTON
-        lwidth DQUOTES elem DQUOTES 
-        lheight DQUOTES elem DQUOTES 
+        LWIDTH DQUOTES elem DQUOTES 
+        LHEIGHT DQUOTES elem DQUOTES 
         TEXT DQUOTES STRING DQUOTES 
         id padding
         SLASH RANGLE;
 
 RadioGroup: LANGLE RADIOG
-            lwidth DQUOTES elem DQUOTES
-            lheight DQUOTES elem DQUOTES 
+            LWIDTH DQUOTES elem DQUOTES
+            LHEIGHT DQUOTES elem DQUOTES 
             id cbutton
             RANGLE
             tempRB
@@ -90,14 +90,14 @@ RadioGroup: LANGLE RADIOG
 RadioButton: /*empty*/
              | RadioButton tempRB;
 tempRB: LANGLE RADIOB 
-        lwidth DQUOTES elem DQUOTES
-        lheight DQUOTES elem DQUOTES
+        LWIDTH DQUOTES elem DQUOTES
+        LHEIGHT DQUOTES elem DQUOTES
         TEXT DQUOTES STRING DQUOTES
         id
         SLASH RANGLE;
 
 ProgressBar: LANGLE PROGRESSB 
-             lwidth DQUOTES elem DQUOTES lheight DQUOTES elem DQUOTES id max progress
+             LWIDTH DQUOTES elem DQUOTES LHEIGHT DQUOTES elem DQUOTES id max progress
              SLASH RANGLE;
 
 contentp: contentp content
@@ -106,23 +106,22 @@ contents: /*empty*/
           | contents content;
 content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | ProgressBar
 
-elem: INTEGER | STRING;
+elem: INTEGER {
+    // check if the integer value is positive
+    if ($1 <= 0) {
+        printf("\nError: elem value must be a positive integer, wrap_content, or match_parent");
+        longjmp(buf, 1);
+    }
+} 
+| STRING {
+    // check if the string value is "wrap_content" or "match_parent"
+    if (strcmp($1, "wrap_content") != 0 && strcmp($1, "match_parent") != 0) {
+        printf("\nError: elem value must be a positive integer, wrap_content, or match_parent");
+        longjmp(buf, 1);
+    }
+};
 
 comment: /* empty */
-
-lwidth: LWIDTH {
-    if($1 != ("wrap_content" || match_parent) || $1 <= 0){
-        printf("\nError: layout_width has incorrect Values");
-        longjmp(buf, 1);
-    }
-};
-
-lheight: LHEIGHT {
-    if($1 != ("wrap_content" || match_parent) || $1 <= 0){
-        printf("\nError: layout_height has incorrect Values");
-        longjmp(buf, 1);
-    }
-};
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES{
