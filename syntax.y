@@ -113,7 +113,7 @@ id: /*empty*/
     | ID DQUOTES STRING DQUOTES {
         if (last_id != NULL) {
           if (strcmp(yytext+1, last_id) == 0) {
-            id_found = true;
+            printf("Duplicate ID Value Found.\n")
           }
         }
         last_id = yytext+1;
