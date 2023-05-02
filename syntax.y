@@ -20,7 +20,7 @@ int yydebug=1;
 %}
 
 %token RELATIVE LINEAR TEXTVIEW IMAGEVIEW BUTTON RADIOG RADIOB PROGRESSB
-%token LWIDTH LHEIGHT ID ORIENTATION TEXT TEXTCOLOUR SRC PADDING CHECKEDB MAX PROGRESS
+%token LWIDTH LHEIGHT ID ORIENTATION TEXT TEXTCOLOUR SRC PADDING CHECKEDB MAX PROGRESS RBCOUNT
 %token SLASH LANGLE RANGLE DQUOTES COMO COMC CHAR
 %token <integer> INTEGER
 %token <string> STRING
@@ -36,6 +36,7 @@ unsigned int integer;
   id_list* head = NULL;
   bool id_found = false;
   int progress_max = 0;
+  int rbcounter = 0;
 %}
 %%
 
@@ -82,14 +83,23 @@ Button: LANGLE BUTTON
 RadioGroup: LANGLE RADIOG
             LWIDTH DQUOTES elem DQUOTES
             LHEIGHT DQUOTES elem DQUOTES 
+            RBCOUNT DQUOTES INTEGER DQUOTES
             id cbutton
             RANGLE
             tempRB
             RadioButton
-            LANGLE SLASH RADIOG RANGLE
+            LANGLE SLASH RADIOG RANGLE{
+                if($11 <= 0 || $11 > rbcounter){
+                    printf("\nError: RadioButtonCount value must be higher than 0 and equal or lower than %d", rbcounter);
+                    longjmp(buf, 1);
+                }
+                rbcounter = 0;
+            }
 
 RadioButton: /*empty*/
-             | RadioButton tempRB
+             | RadioButton tempRB{
+                rbcounter++;
+             }
 
 tempRB: LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES

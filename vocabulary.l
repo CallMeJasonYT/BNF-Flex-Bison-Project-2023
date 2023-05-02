@@ -29,6 +29,7 @@ android:padding= {ECHO; return PADDING;}
 android:checkedButton= {ECHO; return CHECKEDB;}
 android:max= {ECHO; return MAX;}
 android:progress= {ECHO; return PROGRESS;}
+android:radioButtonCount= {ECHO; return RBCOUNT;}
 
 "RelativeLayout" {ECHO; return RELATIVE;}
 "LinearLayout" {ECHO; return LINEAR;}
