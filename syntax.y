@@ -199,8 +199,8 @@ progress: /*empty*/
 
 %%
 
-void yyerror(const char* s){
-    fprintf(stderr,"%s in line : %d\n ",s,yylineno);
+void yyerror(){
+    fprintf(stderr,"Error in line : %d\n ",yylineno);
 }
 
 int main(int argc, char** argv){
@@ -215,13 +215,13 @@ int main(int argc, char** argv){
     yyin=fopen(argv[1],"r");
     if(setjmp(buf) != 0) {
         printf("\nUnsuccessful parsing\n");
+        return 1;
     }
     if(yyparse()==0){
         printf("Succesfull Parsing\n");
     }
     else{
         printf("\nUnsuccesfull parsing\n");
-        yyerror("Parse Error");
-
+        yyerror();
     }
 }
