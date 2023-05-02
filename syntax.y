@@ -116,7 +116,7 @@ comment_text: /* empty */
             ;
 
 id: /*empty*/
-    | ID DQUOTES STRING DQUOTES {
+    | ID DQUOTES STRING DQUOTES{
         // check if id already exists in linked list
         id_found = false;
         id_list* cur = head;
