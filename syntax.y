@@ -97,16 +97,16 @@ RadioGroup: LANGLE RADIOG
             }
 
 RadioButton: /*empty*/
-             | RadioButton tempRB{
-                rbcounter++;
-             }
+             | RadioButton tempRB
 
 tempRB: LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES
         LHEIGHT DQUOTES elem DQUOTES
         TEXT DQUOTES STRING DQUOTES
         id
-        SLASH RANGLE;
+        SLASH RANGLE{
+                rbcounter++;
+             };
 
 ProgressBar: LANGLE PROGRESSB 
              LWIDTH DQUOTES elem DQUOTES 
