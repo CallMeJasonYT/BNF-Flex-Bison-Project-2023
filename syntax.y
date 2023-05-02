@@ -96,7 +96,8 @@ content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGr
 
 elem: INTEGER | STRING;
 
-comment: COMO comment_text COMC
+comment: /* empty */
+         | COMO comment_text COMC
 
 comment_text: /* empty */
             | comment_text CHAR
