@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
+#include<setjmp.h>
 extern int yylineno;
 extern char* yytext;
 extern FILE* yyin;
@@ -24,6 +25,11 @@ unsigned int integer;
 }
 
 %start file
+%{
+  jmp_buf buf;
+  char *last_id = NULL;
+  bool id_found = false;
+%}
 %%
 
 file: comment RelativeLayout | comment LinearLayout;
@@ -104,7 +110,14 @@ comment_text: /* empty */
             ;
 
 id: /*empty*/
-    | ID DQUOTES STRING DQUOTES { if (strcmp(yytext+1, $3) != 0) printf("Error: expected android:id=\"%s\", got \"%s\"\n", yytext+1, $3); };
+    | ID DQUOTES STRING DQUOTES {
+        if (last_id != NULL) {
+          if (strcmp(yytext+1, last_id) == 0) {
+            id_found = true;
+          }
+        }
+        last_id = yytext+1;
+      };
 orientation: /*empty*/
              | ORIENTATION DQUOTES STRING DQUOTES;
 tcolor: /*empty*/
