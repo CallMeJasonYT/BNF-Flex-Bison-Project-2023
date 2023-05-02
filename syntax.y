@@ -4,6 +4,12 @@
 #include<string.h>
 #include<stdbool.h>
 #include<setjmp.h>
+
+typedef struct id_list {
+    char* id;
+    struct id_list* next;
+} id_list;
+
 extern int yylineno;
 extern char* yytext;
 extern FILE* yyin;
@@ -27,7 +33,7 @@ unsigned int integer;
 %start file
 %{
   jmp_buf buf;
-  char *last_id = NULL;
+  id_list* head = NULL;
   bool id_found = false;
 %}
 %%
@@ -111,13 +117,37 @@ comment_text: /* empty */
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES {
-        if (last_id != NULL) {
-          if (strcmp(yytext+1, last_id) == 0) {
-            printf("Duplicate ID Value Found.\n");
-          }
+        // check if id already exists in linked list
+        id_found = false;
+        id_list* cur = head;
+        while (cur != NULL) {
+            if (strcmp(cur->id, yytext) == 0) {
+                id_found = true;
+                break;
+            }
+            cur = cur->next;
         }
-        last_id = yytext+1;
-      };
+        // if id is found, report an error
+        if (id_found) {
+            printf("Error: id %s already exists\n", yytext);
+            longjmp(buf, 1);
+        }
+        // otherwise, add id to linked list
+        id_list* new_id = malloc(sizeof(id_list));
+        new_id->id = strdup(yytext);
+        new_id->next = NULL;
+        if (head == NULL) {
+            head = new_id;
+        } else {
+            id_list* tail = head;
+            while (tail->next != NULL) {
+                tail = tail->next;
+            }
+            tail->next = new_id;
+        }
+    };
+
+
 orientation: /*empty*/
              | ORIENTATION DQUOTES STRING DQUOTES;
 tcolor: /*empty*/
