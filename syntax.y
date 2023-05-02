@@ -129,7 +129,7 @@ id: /*empty*/
         }
         // if id is found, report an error
         if (id_found) {
-            printf("Error: id %s already exists\n", $3);
+            printf("\nError: id %s already exists", $3);
             longjmp(buf, 1);
         }
         // otherwise, add id to linked list
