@@ -171,9 +171,7 @@ padding: /*empty*/
         };
 
 cbutton: /*empty*/ 
-         | CHECKEDB DQUOTES STRING DQUOTES{
-            cbuttonval = $3
-         };
+         | CHECKEDB DQUOTES STRING DQUOTES
 
 max: /*empty*/
      | MAX DQUOTES INTEGER DQUOTES{
