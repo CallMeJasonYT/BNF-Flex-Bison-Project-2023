@@ -6,6 +6,7 @@
 #define ECHO fwrite(yytext,yyleng,1,yyout)
 #include "syntax.tab.h"
 extern void yyerror(const char* s);
+int checkComment(const char* str);
 %}
 %option yylineno
 %option noyywrap
@@ -17,6 +18,7 @@ extern void yyerror(const char* s);
 "<!-- " {ECHO; return COMO;}
 "-->" {ECHO; return COMC;}
 [.^-] {ECHO; return CHAR;}
+"<!--"(.|\n)*"-->" {checkComment(yytext);}
 
 android:layout_width= {ECHO; return LWIDTH;}
 android:layout_height= {ECHO; return LHEIGHT;}
@@ -45,3 +47,18 @@ android:radioButtonCount= {ECHO; return RBCOUNT;}
 [\t]+ {ECHO;}
 . {}
 %%
+
+int checkComment(const char* str) {
+    int length = strlen(str);
+    int i;
+
+    for (i = 4; i < length - 5; i++) {
+        if (str[i] == '-' && str[i+1] == '-') {
+            printf("Error: Two consecutive '-' found. Exiting.\n");
+            return 1; // Two consecutive dashes found
+        }
+    }
+
+    printf("String: %s\n", str);
+    return 0; // No consecutive dashes found
+}
