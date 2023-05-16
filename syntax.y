@@ -40,7 +40,7 @@ unsigned int integer;
 %}
 %%
 
-file: comment RelativeLayout | comment LinearLayout;
+file: RelativeLayout | LinearLayout;
 
 LinearLayout: LANGLE LINEAR
               LWIDTH DQUOTES elem DQUOTES
@@ -134,8 +134,6 @@ elem: INTEGER {
         longjmp(buf, 1);
     }
 };
-
-comment: /* empty */
 
 id: /*empty*/
     | ID DQUOTES STRING DQUOTES{
