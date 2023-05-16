@@ -1,6 +1,6 @@
-file: RelativeLayout | LinearLayout;
+file ::= RelativeLayout | LinearLayout;
 
-LinearLayout: LANGLE LINEAR
+LinearLayout ::= LANGLE LINEAR
               LWIDTH DQUOTES elem DQUOTES
               LHEIGHT DQUOTES elem DQUOTES
               id
@@ -9,7 +9,7 @@ LinearLayout: LANGLE LINEAR
               contentp
               LANGLE SLASH LINEAR RANGLE;
 
-RelativeLayout: LANGLE RELATIVE
+RelativeLayout ::= LANGLE RELATIVE
                 LWIDTH DQUOTES elem DQUOTES
                 LHEIGHT DQUOTES elem DQUOTES
                 id
@@ -17,28 +17,28 @@ RelativeLayout: LANGLE RELATIVE
                 contents
                 LANGLE SLASH RELATIVE RANGLE;
 
-TextView: LANGLE TEXTVIEW
+TextView ::= LANGLE TEXTVIEW
           LWIDTH DQUOTES elem DQUOTES 
           LHEIGHT DQUOTES elem DQUOTES 
           TEXT DQUOTES STRING DQUOTES 
           id tcolor
           SLASH RANGLE;
 
-ImageView: LANGLE IMAGEVIEW
+ImageView ::= LANGLE IMAGEVIEW
            LWIDTH DQUOTES elem DQUOTES
            LHEIGHT DQUOTES elem DQUOTES 
            SRC DQUOTES STRING DQUOTES 
            id padding
            SLASH RANGLE;
               
-Button: LANGLE BUTTON
+Button ::= LANGLE BUTTON
         LWIDTH DQUOTES elem DQUOTES 
         LHEIGHT DQUOTES elem DQUOTES 
         TEXT DQUOTES STRING DQUOTES 
         id padding
         SLASH RANGLE;
 
-RadioGroup: LANGLE RADIOG
+RadioGroup ::= LANGLE RADIOG
             LWIDTH DQUOTES elem DQUOTES
             LHEIGHT DQUOTES elem DQUOTES
             RBCOUNT DQUOTES INTEGER DQUOTES
@@ -48,49 +48,49 @@ RadioGroup: LANGLE RADIOG
             RadioButton
             LANGLE SLASH RADIOG RANGLE
 
-RadioButton: 
+RadioButton ::= 
              | RadioButton tempRB
 
-tempRB: LANGLE RADIOB 
+tempRB ::= LANGLE RADIOB 
         LWIDTH DQUOTES elem DQUOTES
         LHEIGHT DQUOTES elem DQUOTES
         TEXT DQUOTES STRING DQUOTES
         id
         SLASH RANGLE
 
-ProgressBar: LANGLE PROGRESSB 
+ProgressBar ::= LANGLE PROGRESSB 
              LWIDTH DQUOTES elem DQUOTES 
              LHEIGHT DQUOTES elem DQUOTES 
              id max progress
              SLASH RANGLE;
 
-contentp: contentp content
+contentp ::= contentp content
           | content;
 
-contents: 
+contents ::= 
           | contents content;
 
-content: LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | ProgressBar
+content ::= LinearLayout | RelativeLayout | TextView | ImageView | Button | RadioGroup | ProgressBar
 
-elem: INTEGER | STRING
+elem ::= INTEGER | STRING
 
-id: 
+id ::= 
     | ID DQUOTES STRING DQUOTES
 
-orientation: 
+orientation ::= 
              | ORIENTATION DQUOTES STRING DQUOTES;
 
-tcolor: 
+tcolor ::= 
         | TEXTCOLOUR DQUOTES STRING DQUOTES;
 
-padding: 
+padding ::= 
         | PADDING DQUOTES INTEGER DQUOTES
 
-cbutton: 
+cbutton ::= 
          | CHECKEDB DQUOTES STRING DQUOTES
 
-max: 
+max ::= 
      | MAX DQUOTES INTEGER DQUOTES
 
-progress: 
+progress ::= 
           | PROGRESS DQUOTES INTEGER DQUOTES
