@@ -15,8 +15,6 @@ int checkComment(const char* str);
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
-"<!-- " {ECHO; return COMO;}
-"-->" {ECHO; return COMC;}
 [.^-] {ECHO; return CHAR;}
 "<!--"(.|\n)*"-->" {checkComment(yytext);}
 
