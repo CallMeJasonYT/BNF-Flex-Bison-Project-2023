@@ -58,7 +58,6 @@ int checkComment(const char* str) {
             exit(1); // Two consecutive dashes found
         }
     }
-
     printf("%s\n", str);
     return 0; // No consecutive dashes found
 }
