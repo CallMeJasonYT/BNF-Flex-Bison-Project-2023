@@ -15,7 +15,6 @@ int checkComment(const char* str);
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
-[.^-] {ECHO; return CHAR;}
 "<!--"(.|\n)*"-->" {checkComment(yytext);}
 
 android:layout_width= {ECHO; return LWIDTH;}
