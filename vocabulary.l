@@ -55,7 +55,7 @@ int checkComment(const char* str) {
     for (i = 4; i < length - 5; i++) {
         if (str[i] == '-' && str[i+1] == '-') {
             printf("Error: Two consecutive '-' found. Exiting.\n");
-            return 1; // Two consecutive dashes found
+            exit(1); // Two consecutive dashes found
         }
     }
 
