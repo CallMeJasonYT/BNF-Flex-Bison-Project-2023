@@ -73,15 +73,16 @@ extern int yydebug;
     CHECKEDB = 274,                /* CHECKEDB  */
     MAX = 275,                     /* MAX  */
     PROGRESS = 276,                /* PROGRESS  */
-    SLASH = 277,                   /* SLASH  */
-    LANGLE = 278,                  /* LANGLE  */
-    RANGLE = 279,                  /* RANGLE  */
-    DQUOTES = 280,                 /* DQUOTES  */
-    COMO = 281,                    /* COMO  */
-    COMC = 282,                    /* COMC  */
-    CHAR = 283,                    /* CHAR  */
-    INTEGER = 284,                 /* INTEGER  */
-    STRING = 285                   /* STRING  */
+    RBCOUNT = 277,                 /* RBCOUNT  */
+    SLASH = 278,                   /* SLASH  */
+    LANGLE = 279,                  /* LANGLE  */
+    RANGLE = 280,                  /* RANGLE  */
+    DQUOTES = 281,                 /* DQUOTES  */
+    COMO = 282,                    /* COMO  */
+    COMC = 283,                    /* COMC  */
+    CHAR = 284,                    /* CHAR  */
+    INTEGER = 285,                 /* INTEGER  */
+    STRING = 286                   /* STRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -90,12 +91,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 21 "syntax.y"
+#line 28 "syntax.y"
 
 char* string;
 unsigned int integer;
 
-#line 99 "syntax.tab.h"
+#line 100 "syntax.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
