@@ -1,0 +1,96 @@
+<file> ::= <RelativeLayout> | <LinearLayout>;
+
+<LinearLayout> ::= LANGLE LINEAR
+              LWIDTH DQUOTES <elem> DQUOTES
+              LHEIGHT DQUOTES <elem> DQUOTES
+              <id>
+              <orientation>
+              RANGLE
+              <contentp>
+              LANGLE SLASH LINEAR RANGLE;
+
+<RelativeLayout> ::= LANGLE RELATIVE
+                LWIDTH DQUOTES <elem> DQUOTES
+                LHEIGHT DQUOTES <elem> DQUOTES
+                <id>
+                RANGLE
+                <contents>
+                LANGLE SLASH RELATIVE RANGLE;
+
+<TextView> ::= LANGLE TEXTVIEW
+          LWIDTH DQUOTES <elem> DQUOTES 
+          LHEIGHT DQUOTES <elem> DQUOTES 
+          TEXT DQUOTES STRING DQUOTES 
+          <id> <tcolor>
+          SLASH RANGLE;
+
+<ImageView> ::= LANGLE IMAGEVIEW
+           LWIDTH DQUOTES <elem> DQUOTES
+           LHEIGHT DQUOTES <elem> DQUOTES 
+           SRC DQUOTES STRING DQUOTES 
+           <id> <padding>
+           SLASH RANGLE;
+              
+<Button> ::= LANGLE BUTTON
+        LWIDTH DQUOTES <elem> DQUOTES 
+        LHEIGHT DQUOTES <elem> DQUOTES 
+        TEXT DQUOTES STRING DQUOTES 
+        <id> <padding>
+        SLASH RANGLE;
+
+<RadioGroup> ::= LANGLE RADIOG
+            LWIDTH DQUOTES <elem> DQUOTES
+            LHEIGHT DQUOTES <elem> DQUOTES
+            RBCOUNT DQUOTES INTEGER DQUOTES
+            <id> <cbutton>
+            RANGLE
+            <tempRB>
+            <RadioButton>
+            LANGLE SLASH RADIOG RANGLE
+
+<RadioButton> ::= 
+             | <RadioButton> <tempRB>
+
+<tempRB> ::= LANGLE RADIOB 
+        LWIDTH DQUOTES <elem> DQUOTES
+        LHEIGHT DQUOTES <elem> DQUOTES
+        TEXT DQUOTES STRING DQUOTES
+        <id>
+        SLASH RANGLE
+
+<ProgressBar> ::= LANGLE PROGRESSB 
+             LWIDTH DQUOTES <elem> DQUOTES 
+             LHEIGHT DQUOTES <elem> DQUOTES 
+             <id> <max> <progress>
+             SLASH RANGLE;
+
+<contentp> ::= <contentp> <content>
+          | <content>;
+
+<contents> ::= 
+          | <contents> <content>;
+
+<content> ::= <LinearLayout> | <RelativeLayout> | <TextView> | <ImageView> | <Button> | <RadioGroup> | <ProgressBar>
+
+<elem> ::= INTEGER | STRING
+
+<id> ::= 
+    | ID DQUOTES STRING DQUOTES
+
+<orientation> ::= 
+             | ORIENTATION DQUOTES STRING DQUOTES;
+
+<tcolor> ::= 
+        | TEXTCOLOUR DQUOTES STRING DQUOTES;
+
+<padding> ::= 
+        | PADDING DQUOTES INTEGER DQUOTES
+
+<cbutton> ::= 
+         | CHECKEDB DQUOTES STRING DQUOTES
+
+<max> ::= 
+     | MAX DQUOTES INTEGER DQUOTES
+
+<progress> ::= 
+          | PROGRESS DQUOTES INTEGER DQUOTES
