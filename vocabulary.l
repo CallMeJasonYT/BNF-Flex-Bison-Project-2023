@@ -11,7 +11,6 @@ int checkComment(const char* str);
 %option yylineno
 %option noyywrap
 %s COMMENT
-%s INITIAL
 %%
 
 <COMMENT>{
