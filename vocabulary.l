@@ -19,7 +19,7 @@ int checkComment(const char* str);
 }
 
 <INITIAL>{
-"<!--"{BEGIN(COMMENT);}
+"<!--" {BEGIN(COMMENT);}
 "<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
