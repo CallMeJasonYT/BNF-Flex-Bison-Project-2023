@@ -78,11 +78,8 @@ extern int yydebug;
     LANGLE = 279,                  /* LANGLE  */
     RANGLE = 280,                  /* RANGLE  */
     DQUOTES = 281,                 /* DQUOTES  */
-    COMO = 282,                    /* COMO  */
-    COMC = 283,                    /* COMC  */
-    CHAR = 284,                    /* CHAR  */
-    INTEGER = 285,                 /* INTEGER  */
-    STRING = 286                   /* STRING  */
+    INTEGER = 282,                 /* INTEGER  */
+    STRING = 283                   /* STRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -96,7 +93,7 @@ union YYSTYPE
 char* string;
 unsigned int integer;
 
-#line 100 "syntax.tab.h"
+#line 97 "syntax.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
