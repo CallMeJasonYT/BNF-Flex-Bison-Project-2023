@@ -10,10 +10,9 @@ int checkComment(const char* str);
 %}
 %option yylineno
 %option noyywrap
-%s COMMENT, INITIAL
+%s COMMENT
+%s INITIAL
 %%
-
-<INITIAL>"<!--"{BEGIN(COMMENT);}
 
 <COMMENT>{
     "-->" {BEGIN(INITIAL);}
@@ -21,6 +20,7 @@ int checkComment(const char* str);
 }
 
 <INITIAL>{
+"<!--"{BEGIN(COMMENT);}
 "<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
