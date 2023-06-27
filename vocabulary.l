@@ -14,8 +14,8 @@ int checkComment(const char* str);
 %%
 
 <COMMENT>{
-    [.|\n]* {checkComment(yytext);}
-    "-->" {ECHO; BEGIN(INITIAL);}
+    "-->" {BEGIN(INITIAL);}
+    "(.|\n)*" {checkComment(yytext);}
 }
 
 <INITIAL>{
