@@ -10,12 +10,20 @@ int checkComment(const char* str);
 %}
 %option yylineno
 %option noyywrap
+%s COMMENT
 %%
+
+<COMMENT>{
+    "-->" {BEGIN(INITIAL);}
+    "(.|\n)*" {checkComment(yytext);}
+}
+
+<INITIAL>{
+"<!--" {BEGIN(COMMENT);}
 "<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
-"<!--"(.|\n)*"-->" {checkComment(yytext);}
 
 android:layout_width= {ECHO; return LWIDTH;}
 android:layout_height= {ECHO; return LHEIGHT;}
@@ -43,6 +51,7 @@ android:radioButtonCount= {ECHO; return RBCOUNT;}
 [\n] {ECHO;}
 [\t]+ {ECHO;}
 . {}
+}
 %%
 
 int checkComment(const char* str) {
