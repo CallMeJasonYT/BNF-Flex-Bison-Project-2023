@@ -2105,4 +2105,3 @@ int checkComment(const char* str) {
     printf("%s\n", str);
     return 0; // No consecutive dashes found
 }
-
