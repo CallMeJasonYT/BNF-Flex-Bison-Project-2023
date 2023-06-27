@@ -14,12 +14,12 @@ int checkComment(const char* str);
 %%
 
 <COMMENT>{
-    "-->" {BEGIN(INITIAL);}
+    "-->" {ECHO; BEGIN(INITIAL);}
     "(.|\n)*" {checkComment(yytext);}
 }
 
 <INITIAL>{
-"<!--" {BEGIN(COMMENT);}
+"<!--" {ECHO; BEGIN(COMMENT);}
 "<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
