@@ -14,7 +14,7 @@ int checkComment(const char* str);
 %%
 
 <COMMENT>{
-    ".|\n" {checkComment(yytext);}
+    (.|\n)+ {checkComment(yytext);}
     "-->" {ECHO; BEGIN(INITIAL);}
 }
 
@@ -47,7 +47,7 @@ android:radioButtonCount= {ECHO; return RBCOUNT;}
 "RadioButton" {ECHO; return RADIOB;}
 "ProgressBar" {ECHO; return PROGRESSB;}
 [0-9]+ {ECHO; yylval.integer=atoi(yytext); return INTEGER;}
-[a-zA-Z0-9_ ]+ {yylval.string=strdup(yytext); ECHO; printf("%s", "Test"); return STRING;}
+[a-zA-Z0-9_ ]+ {yylval.string=strdup(yytext); ECHO; return STRING;}
 [\n] {ECHO;}
 [\t]+ {ECHO;}
 . {}
