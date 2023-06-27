@@ -10,20 +10,15 @@ int checkComment(const char* str);
 %}
 %option yylineno
 %option noyywrap
-%s COMMENT
 %%
-
-<COMMENT>{
-    "-->" {BEGIN(INITIAL);}
-    "(.|\n)*" {checkComment(yytext);}
-}
-
-<INITIAL>{
-"<!--" {ECHO; BEGIN(COMMENT);}
 "<" {ECHO; return LANGLE;}
 ">" {ECHO; return RANGLE;}
 "/" {ECHO; return SLASH;}
 \" {ECHO; return DQUOTES;}
+"<!-- " {ECHO; return COMO;}
+"-->" {ECHO; return COMC;}
+[.^-] {ECHO; return CHAR;}
+"<!--"(.|\n)*"-->" {checkComment(yytext);}
 
 android:layout_width= {ECHO; return LWIDTH;}
 android:layout_height= {ECHO; return LHEIGHT;}
@@ -51,15 +46,13 @@ android:radioButtonCount= {ECHO; return RBCOUNT;}
 [\n] {ECHO;}
 [\t]+ {ECHO;}
 . {}
-}
 %%
 
 int checkComment(const char* str) {
     int length = strlen(str);
-    printf("%d", length);
     int i;
 
-    for (i = 3; i < length - 5; i++) {
+    for (i = 4; i < length - 5; i++) {
         if (str[i] == '-' && str[i+1] == '-') {
             printf("Error: Two consecutive '-' found. Exiting.\n");
             exit(1); // Two consecutive dashes found
