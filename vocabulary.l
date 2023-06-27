@@ -56,6 +56,7 @@ android:radioButtonCount= {ECHO; return RBCOUNT;}
 
 int checkComment(const char* str) {
     int length = strlen(str);
+    printf("%d", length);
     int i;
 
     for (i = 3; i < length - 5; i++) {
