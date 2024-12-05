@@ -14,7 +14,7 @@ The project simulates the workflow of a compiler's front-end, highlighting essen
 - Error Handling: Provides detailed error messages for invalid syntax or lexical structures.
 - Test Suite: Includes multiple test cases to verify correctness under various scenarios (valid, invalid, and edge cases).
 
-##Tech Stack
+## Tech Stack
 Core Technologies: Flex, Bison, C/C++
 
 ## Installation
